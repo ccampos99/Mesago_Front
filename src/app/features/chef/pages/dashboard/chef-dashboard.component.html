@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+  <!-- HEADER mejorado -->
+  <div class="dashboard-header">
+    <h1 class="page-title">Dashboard</h1>
+    <div class="header-actions">
+      <button class="icon-button"><i class="material-icons">mail</i></button>
+      <div class="search-box">
+        <i class="material-icons">search</i>
+        <input type="text" placeholder="Search ID Order" class="search-input">
+      </div>
+      <button class="icon-button"><i class="material-icons">campaign</i></button>
+      <div class="user-profile">
+        <img src="assets/images/chef-avatar.jpg" alt="Perfil Chef" class="avatar">
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATO PENDIENTE -->
+  <div class="pending-dish-card">
+    <div class="pending-dish-header">
+      <div class="pending-label">Plato Pendiente</div>
+      <div class="time-indicator">
+        <i class="material-icons">schedule</i>
+        <span>+ 8 min</span>
+      </div>
+      <div class="navigation-buttons">
+        <button class="nav-button"><i class="material-icons">arrow_back</i></button>
+        <button class="nav-button"><i class="material-icons">arrow_forward</i></button>
+      </div>
+    </div>
+    <div class="dish-details">
+      <h2 class="dish-name">Arroz con Mariscos <span class="dish-portion">- 1/2</span></h2>
+      <div class="dish-category">CLÁSICO - NO LANGOSTINOS</div>
+      <div class="table-info">
+        <div class="table-icon"><i class="material-icons">table_restaurant</i></div>
+        <div class="table-details">
+          <div class="table-number">Mesa 4</div>
+          <div class="table-guests">Tot. 5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIEMPO Y ESTADO -->
+  <div class="timer-card">
+    <div class="timer-label">Tiempo de Espera</div>
+    <div class="timer-display">
+      <span class="timer-value">{{ waitTime.hours }}:{{ waitTime.minutes }}:{{ waitTime.seconds }}</span>
+      <span class="timer-unit">min</span>
+    </div>
+  </div>
+
+  <div class="tabs-container">
+    <div class="tab-button">Estado de Pedidos</div>
+    <div class="tab-button active">
+      Platos
+      <div class="stats-badges">
+        <span class="badge yellow">{{ pendingDishes }}</span>
+        <span class="badge green">{{ completedDishes }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÓRDENES -->
+  <div class="orders-section">
+    <h2 class="section-title">Órdenes</h2>
+    <div class="orders-list">
+      <div *ngFor="let order of activeOrders" class="order-card">
+        <div class="order-header">
+          <div>
+            <div class="order-id">ID Orden #{{ order.id }}</div>
+            <div class="order-time">{{ order.time | date:'h:mm a' }} | HOY</div>
+          </div>
+          <div class="order-customer">{{ order.customer }}</div>
+          <div class="order-progress">{{ getOrderProgress(order) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETALLE ORDEN SELECCIONADA -->
+  <div class="selected-order-details" *ngIf="selectedOrder">
+    <div class="details-header">
+      <div class="order-id">#{{ selectedOrder.id }}</div>
+      <div class="customer-name">{{ selectedOrder.customer }}</div>
+      <div class="order-time">{{ selectedOrder.time | date:'h:mm a' }} | HOY</div>
+      <div class="order-progress">{{ getOrderProgress(selectedOrder) }}</div>
+    </div>
+    <div class="details-content">
+      <h3 class="details-title">Detalle Orden</h3>
+      <div class="order-items-detailed">
+        <div *ngFor="let item of selectedOrder.items" class="order-item-detailed">
+          <div class="item-name">{{ item.quantity }}x {{ item.name }}</div>
+          <div *ngIf="item.timeRemaining" class="time-remaining">+ {{ item.timeRemaining }} min</div>
+        </div>
+      </div>
+      <div *ngIf="selectedDish" class="dish-ingredients">
+        <h3 class="ingredients-title">{{ selectedDish.quantity }}x {{ selectedDish.name }}</h3>
+        <div class="ingredients-list">
+          <div *ngFor="let ingredient of selectedDish.ingredients" class="ingredient-item">
+            <div class="ingredient-name">{{ ingredient.name }}</div>
+            <div class="ingredient-quantity">{{ ingredient.quantity }} {{ ingredient.unit }}</div>
+          </div>
+        </div>
+        <button class="ready-button">Listo</button>
+      </div>
+    </div>
+  </div>
+</div>

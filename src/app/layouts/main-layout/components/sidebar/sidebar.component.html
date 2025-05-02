@@ -1,0 +1,25 @@
+<aside class="sidebar">
+  <div class="logo-container">
+    <img src="assets/images/logo-mesago.png" alt="MesaGo!" class="logo">
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <li *ngFor="let item of filteredMenuItems" class="nav-item">
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="nav-link"
+        >
+          <span class="nav-text">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="time-display" *ngIf="showClock">
+      {{ currentTime }}
+    </div>
+  </div>
+</aside>

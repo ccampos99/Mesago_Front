@@ -1,0 +1,239 @@
+/* === GENERAL LAYOUT === */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  grid-template-rows: auto auto auto;
+  gap: 24px;
+  padding: 24px;
+  background: #F8F9FA;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* === HEADER === */
+.dashboard-header {
+  grid-column: 1 / 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #2962FF;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f1f3f5;
+  border-radius: 12px;
+  padding: 10px 16px;
+  width: 300px;
+  border: 1px solid #d0d7de;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  color: #5f6368;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* === SECTION STYLES === */
+section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* === PENDING DISH CARD === */
+.pending-dish-card {
+  grid-column: 1 / 2;
+}
+.pending-label {
+  color: #2962FF;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.dish-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+.dish-portion {
+  font-weight: 400;
+  color: #757575;
+}
+.dish-category {
+  font-size: 13px;
+  color: #a0a0a0;
+  margin-bottom: 8px;
+}
+.time-indicator {
+  font-size: 14px;
+  color: #FF9800;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.navigation-buttons {
+  display: flex;
+  gap: 8px;
+}
+.nav-button {
+  background-color: #2962FF;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* === TIMER === */
+.timer-card {
+  grid-column: 2 / 3;
+  text-align: center;
+}
+.timer-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #616161;
+  margin-bottom: 6px;
+}
+.timer-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #212121;
+}
+
+/* === STATS === */
+.tabs-container {
+  grid-column: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tab-button {
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  background: none;
+  color: #757575;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+.tab-button.active {
+  color: #2962FF;
+  font-weight: 600;
+}
+.stats-badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge.yellow {
+  background-color: #FFF3E0;
+  color: #FB8C00;
+}
+.badge.green {
+  background-color: #E8F5E9;
+  color: #4CAF50;
+}
+
+/* === ORDER SECTION === */
+.orders-section {
+  grid-column: 1 / 2;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #2962FF;
+}
+.order-card {
+  border: 2px solid #2962FF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.order-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+.order-id {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.order-customer {
+  font-size: 20px;
+  font-weight: 700;
+}
+.order-time {
+  font-size: 13px;
+  color: #757575;
+  margin-bottom: 6px;
+}
+
+/* === SELECTED ORDER === */
+.selected-order-details {
+  grid-column: 2 / 4;
+}
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 16px;
+}
+.customer-name {
+  font-weight: 600;
+  font-size: 18px;
+}
+.order-progress {
+  font-weight: 600;
+  color: #4CAF50;
+  font-size: 16px;
+}
